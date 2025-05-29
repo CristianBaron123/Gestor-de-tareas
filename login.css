@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #f1f1f1;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  flex: 1;
+  background-color: #6A5CFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.illustration {
+  width: 90%;
+  max-width: 500px;
+}
+
+.right {
+  flex: 1;
+  background: #fff;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+button img {
+  width: 20px;
+  height: 20px;
+}
+
+.google-btn,
+.facebook-btn {
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.separator span {
+  flex: 1;
+  height: 1px;
+  background: #ccc;
+}
+
+.separator p {
+  margin: 0 10px;
+  color: #777;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #f2f2f2;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  position: relative;
+}
+
+.input-group img {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+}
+
+.input-group input:focus {
+  outline: none;
+}
+
+.eye {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.options a {
+  text-decoration: none;
+  color: #6A5CFF;
+}
+
+.login-btn {
+  background: #6A5CFF;
+  color: white;
+  font-size: 16px;
+}
+
+.register {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.register a {
+  color: #6A5CFF;
+  text-decoration: none;
+}

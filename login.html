@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Tareas - Login</title>
+  <link rel="stylesheet" href="login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <img src="imagen.png" alt="Ilustración" class="illustration">
+    </div>
+    <div class="right">
+      <h2>Bienvenido al gestor de tareas</h2>
+
+      <button class="google-btn">
+        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google"> Iniciar sesion con Google
+      </button>
+
+      <button class="facebook-btn">
+        <img src="https://www.svgrepo.com/show/475647/facebook-color.svg" alt="Facebook"> Iniciar sesion con Facebook
+      </button>
+
+      <div class="separator"><span></span><p>o</p><span></span></div>
+
+      <form>
+        <div class="input-group">
+          <label><img src="https://www.svgrepo.com/show/521128/email-1.svg" alt="email"></label>
+          <input type="email" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+          <label><img src="https://www.svgrepo.com/show/532323/lock-alt.svg" alt="contraseña"></label>
+          <input type="password" placeholder="Contraseña">
+          <span class="eye">&#128065;</span>
+        </div>
+
+        <div class="options">
+          <label><input type="checkbox"> Recordar</label>
+          <a href="#">¿Olvidaste la contraseña?</a>
+        </div>
+
+        <button type="submit" class="login-btn">Iniciar sesión</button>
+      </form>
+
+      <p class="register">No tienes una cuenta? <a href="register.html">Regístrate</a></p>
+    </div>
+  </div>
+    <script src="login.js"></script>
+</body>
+</html>

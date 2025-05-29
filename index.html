@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de tareas</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos para el botón de agregar tarea */
+    .add-task-inline {
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 4px;
+      color: #1f6ef5;
+      font-weight: bold;
+      transition: all 0.2s;
+      display: inline-block;
+      margin: 4px 0;
+    }
+    
+    .add-task-inline:hover {
+      background-color: #e5edfb;
+      transform: translateX(2px);
+    }
+    
+    /* Estilos para el input al agregar nueva tarea */
+    .add-task-input {
+      width: calc(100% - 24px);
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      font-size: 14px;
+      margin: 4px 0;
+      box-shadow: 0 0 0 2px rgba(31, 110, 245, 0.2);
+      transition: all 0.3s;
+      outline: none;
+    }
+    
+    .add-task-input:focus {
+      border-color: #1f6ef5;
+    }
+    
+    /* Asegurar que la fila de agregar tenga el mismo estilo */
+    .add-task-row td {
+      padding: 12px 8px;
+      background-color: #f8f9fa;
+      border-top: 2px solid #e9ecef;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="logo.png" alt="Logo">
+        <h2>Gestor de tareas</h2>
+      </div>
+      <nav>
+        <a href="#">🏠 Inicio</a>
+        <a href="#">📝 Mi tarea</a>
+        <a href="#">📊 Panel de control</a>
+        <a href="login.html">🔓 Cerrar sesión</a>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+      <header class="top-bar">
+        <div class="header-container">
+          <div class="header-title">
+            <h1>Dashboard</h1>
+            <div class="title-line"></div>
+          </div>
+          <div class="actions">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder=" Buscar tareas...">
+                <div class="search-icon">🔍</div>
+            </div>
+            <button class="action-btn sort-btn">↕️ Ordenar</button>
+            <button class="action-btn hide-btn">🙈 Ocultar</button>
+            <button class="action-btn delete-btn" style="display: none;">🗑️ Eliminar</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="tasks">
+        <!-- Pendientes -->
+        <div class="task-group">
+          <h2 class="pending-title">⬇ Pendiente</h2>
+          <table>
+            <thead>
+              <tr>
+                <th></th><th>Tarea</th><th>Estado</th><th>Vencimiento</th><th>Prioridad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>Taller 001</td>
+                <td>
+                  <div class="status-dropdown">
+                    <div class="status-display not-started" data-status="not-started">No iniciado</div>
+                    <div class="status-options">
+                      <div class="status-option" data-status="done" style="--status-color: #00C875;">Listo</div>
+                      <div class="status-option" data-status="in-progress" style="--status-color: #FDAB3D;">En curso</div>
+                      <div class="status-option" data-status="stopped" style="--status-color: #DF2F4A;">Detenido</div>
+                      <div class="status-option" data-status="not-started" style="--status-color: #C4C4C4;">No iniciado</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="date-selector">
+                    <div class="date-display">
+                      <span class="date-icon">📅</span>
+                      <span class="add-icon">➕</span>
+                      <span class="selected-date" style="display: none;"></span>
+                    </div>
+                    <div class="calendar-popup">
+                      <div class="calendar-header">
+                        <button class="prev-month">◀</button>
+                        <h3 class="month-year">Mayo 2023</h3>
+                        <button class="next-month">▶</button>
+                      </div>
+                      <div class="calendar-grid"></div>
+                      <div class="calendar-actions">
+                        <button class="today-btn">Hoy</button>
+                        <button class="clear-btn">Limpiar</button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="priority-dropdown">
+                    <div class="priority-display high" data-priority="high">Alto</div>
+                    <div class="priority-options">
+                      <div class="priority-option" data-priority="urgent" style="--priority-color: #444;">Urgente ⚠️</div>
+                      <div class="priority-option" data-priority="high" style="--priority-color: #5b3cc4;">Alto</div>
+                      <div class="priority-option" data-priority="medium" style="--priority-color: #5554c4;">Medio</div>
+                      <div class="priority-option" data-priority="low" style="--priority-color: #4c84e3;">Bajo</div>
+                      <div class="priority-option" data-priority="neutral" style="--priority-color: #bbb;">—</div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>Proyecto de grado</td>
+                <td>
+                  <div class="status-dropdown">
+                    <div class="status-display not-started" data-status="not-started">No iniciado</div>
+                    <div class="status-options">
+                      <div class="status-option" data-status="done" style="--status-color: #00C875;">Listo</div>
+                      <div class="status-option" data-status="in-progress" style="--status-color: #FDAB3D;">En curso</div>
+                      <div class="status-option" data-status="stopped" style="--status-color: #DF2F4A;">Detenido</div>
+                      <div class="status-option" data-status="not-started" style="--status-color: #C4C4C4;">No iniciado</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="date-selector">
+                    <div class="date-display">
+                      <span class="date-icon">📅</span>
+                      <span class="add-icon">➕</span>
+                      <span class="selected-date" style="display: none;"></span>
+                    </div>
+                    <div class="calendar-popup">
+                      <div class="calendar-header">
+                        <button class="prev-month">◀</button>
+                        <h3 class="month-year">Mayo 2023</h3>
+                        <button class="next-month">▶</button>
+                      </div>
+                      <div class="calendar-grid"></div>
+                      <div class="calendar-actions">
+                        <button class="today-btn">Hoy</button>
+                        <button class="clear-btn">Limpiar</button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="priority-dropdown">
+                    <div class="priority-display urgent" data-priority="urgent">Urgente ⚠️</div>
+                    <div class="priority-options">
+                      <div class="priority-option" data-priority="urgent" style="--priority-color: #444;">Urgente ⚠️</div>
+                      <div class="priority-option" data-priority="high" style="--priority-color: #5b3cc4;">Alto</div>
+                      <div class="priority-option" data-priority="medium" style="--priority-color: #5554c4;">Medio</div>
+                      <div class="priority-option" data-priority="low" style="--priority-color: #4c84e3;">Bajo</div>
+                      <div class="priority-option" data-priority="neutral" style="--priority-color: #bbb;">—</div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>Traducir juegos</td>
+                <td>
+                  <div class="status-dropdown">
+                    <div class="status-display not-started" data-status="not-started">No iniciado</div>
+                    <div class="status-options">
+                      <div class="status-option" data-status="done" style="--status-color: #00C875;">Listo</div>
+                      <div class="status-option" data-status="in-progress" style="--status-color: #FDAB3D;">En curso</div>
+                      <div class="status-option" data-status="stopped" style="--status-color: #DF2F4A;">Detenido</div>
+                      <div class="status-option" data-status="not-started" style="--status-color: #C4C4C4;">No iniciado</div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="date-selector">
+                    <div class="date-display">
+                      <span class="date-icon">📅</span>
+                      <span class="add-icon">➕</span>
+                      <span class="selected-date" style="display: none;"></span>
+                    </div>
+                    <div class="calendar-popup">
+                      <div class="calendar-header">
+                        <button class="prev-month">◀</button>
+                        <h3 class="month-year">Mayo 2023</h3>
+                        <button class="next-month">▶</button>
+                      </div>
+                      <div class="calendar-grid"></div>
+                      <div class="calendar-actions">
+                        <button class="today-btn">Hoy</button>
+                        <button class="clear-btn">Limpiar</button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <div class="priority-dropdown">
+                    <div class="priority-display neutral" data-priority="neutral">—</div>
+                    <div class="priority-options">
+                      <div class="priority-option" data-priority="urgent" style="--priority-color: #444;">Urgente ⚠️</div>
+                      <div class="priority-option" data-priority="high" style="--priority-color: #5b3cc4;">Alto</div>
+                      <div class="priority-option" data-priority="medium" style="--priority-color: #5554c4;">Medio</div>
+                      <div class="priority-option" data-priority="low" style="--priority-color: #4c84e3;">Bajo</div>
+                      <div class="priority-option" data-priority="neutral" style="--priority-color: #bbb;">—</div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="add-task-row">
+                <td></td>
+                <td colspan="4">
+                  <div class="add-task-inline">+ Agregar tarea</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

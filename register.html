@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registro</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #eef0f7;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+    }
+
+    .social-btn:hover {
+      background: #f0f0f0;
+    }
+
+    .divider {
+      margin: 20px 0;
+      display: flex;
+      align-items: center;
+      text-align: center;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: #ccc;
+    }
+
+    .divider span {
+      padding: 0 10px;
+      color: #666;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      background: #f0f0f0;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      padding: 10px;
+    }
+
+    .input-group span {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .input-group input {
+      border: none;
+      background: transparent;
+      outline: none;
+      flex: 1;
+      font-size: 16px;
+    }
+
+    .eye {
+      cursor: pointer;
+    }
+
+    button {
+      background: #5a4fcf;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background: #483fc2;
+    }
+
+    .footer {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: #5a4fcf;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Te damos la bienvenida</h2>
+
+    <div class="social-btn"><img src="https://img.icons8.com/color/16/000000/google-logo.png"/> Continúa con Google</div>
+    <div class="social-btn"><img src="https://img.icons8.com/fluency/16/facebook-new.png"/> Continúa con Facebook</div>
+
+    <div class="divider"><span>o</span></div>
+
+    <form id="registerForm">
+      <div class="input-group">
+        <span>✉️</span>
+        <input type="email" placeholder="Email" required>
+      </div>
+
+      <div class="input-group">
+        <span>🔑</span>
+        <input type="password" placeholder="Contraseña" id="password" required>
+        <span class="eye" onclick="togglePassword('password')">👁️</span>
+      </div>
+
+      <div class="input-group">
+        <span>🔑</span>
+        <input type="password" placeholder="Confirmar contraseña" id="confirmPassword" required>
+        <span class="eye" onclick="togglePassword('confirmPassword')">👁️</span>
+      </div>
+
+      <button type="submit">Registrarse</button>
+    </form>
+
+    <div class="footer">
+      ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
+    </div>
+  </div>
+
+  <script>
+    function togglePassword(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const pass = document.getElementById('password').value;
+      const confirm = document.getElementById('confirmPassword').value;
+
+      if (pass !== confirm) {
+        alert("Las contraseñas no coinciden.");
+        return;
+      }
+
+      // Aquí puedes agregar almacenamiento local o redirección
+      window.location.href = "index.html";
+    });
+  </script>
+
+</body>
+</html>
